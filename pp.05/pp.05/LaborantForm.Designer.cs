@@ -30,42 +30,55 @@ namespace pp._05
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LaborantForm));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.mainPic = new System.Windows.Forms.PictureBox();
             this.roleLabel = new System.Windows.Forms.Label();
             this.exitButton = new System.Windows.Forms.Button();
             this.roleStatic = new System.Windows.Forms.Label();
             this.fioStatic = new System.Windows.Forms.Label();
             this.fioLabel = new System.Windows.Forms.Label();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.analizerButton = new System.Windows.Forms.Button();
             this.timerLogout = new System.Windows.Forms.Timer(this.components);
             this.labelCountdown = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.tabPage6 = new System.Windows.Forms.TabPage();
+            this.pic = new System.Windows.Forms.PictureBox();
+            this.txtDecode = new System.Windows.Forms.TextBox();
+            this.Decode = new System.Windows.Forms.Label();
+            this.txtEncode = new System.Windows.Forms.TextBox();
+            this.Encode = new System.Windows.Forms.Label();
+            this.btnDecode = new System.Windows.Forms.Button();
+            this.btnEncode = new System.Windows.Forms.Button();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.patientFioTextBox = new System.Windows.Forms.MaskedTextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.fillBiomaterial = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.mainPic)).BeginInit();
-            this.tabPage2.SuspendLayout();
-            this.tabPage3.SuspendLayout();
-            this.tabPage4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mainPic)).BeginInit();
+            this.tabPage4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+            this.tabPage5.SuspendLayout();
+            this.tabPage6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Controls.Add(this.tabPage3);
+            this.tabControl1.Controls.Add(this.tabPage5);
             this.tabControl1.Controls.Add(this.tabPage4);
+            this.tabControl1.Controls.Add(this.tabPage6);
             this.tabControl1.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.tabControl1.Location = new System.Drawing.Point(-1, -2);
             this.tabControl1.Name = "tabControl1";
@@ -91,11 +104,24 @@ namespace pp._05
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Личный кабинет";
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::pp._05.Properties.Resources.logo;
+            this.pictureBox1.Location = new System.Drawing.Point(6, 380);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(100, 100);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 6;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            // 
             // mainPic
             // 
+            this.mainPic.Image = ((System.Drawing.Image)(resources.GetObject("mainPic.Image")));
             this.mainPic.Location = new System.Drawing.Point(20, 17);
             this.mainPic.Name = "mainPic";
             this.mainPic.Size = new System.Drawing.Size(100, 100);
+            this.mainPic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.mainPic.TabIndex = 0;
             this.mainPic.TabStop = false;
             // 
@@ -151,28 +177,6 @@ namespace pp._05
             this.fioLabel.Text = "fio";
             this.fioLabel.Click += new System.EventHandler(this.fioLabel_Click);
             // 
-            // tabPage2
-            // 
-            this.tabPage2.Controls.Add(this.pictureBox2);
-            this.tabPage2.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.tabPage2.Location = new System.Drawing.Point(4, 24);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(570, 486);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Истории входа";
-            this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // tabPage3
-            // 
-            this.tabPage3.Controls.Add(this.pictureBox3);
-            this.tabPage3.Location = new System.Drawing.Point(4, 24);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(570, 486);
-            this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "Материалы";
-            this.tabPage3.UseVisualStyleBackColor = true;
-            // 
             // tabPage4
             // 
             this.tabPage4.Controls.Add(this.pictureBox4);
@@ -183,6 +187,16 @@ namespace pp._05
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Анализатор";
             this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // pictureBox4
+            // 
+            this.pictureBox4.Image = global::pp._05.Properties.Resources.logo;
+            this.pictureBox4.Location = new System.Drawing.Point(6, 380);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(100, 100);
+            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox4.TabIndex = 8;
+            this.pictureBox4.TabStop = false;
             // 
             // analizerButton
             // 
@@ -209,16 +223,97 @@ namespace pp._05
             this.labelCountdown.Text = "Time";
             this.labelCountdown.Click += new System.EventHandler(this.labelElapsedTime_Click);
             // 
-            // pictureBox1
+            // tabPage5
             // 
-            this.pictureBox1.Image = global::pp._05.Properties.Resources.logo;
-            this.pictureBox1.Location = new System.Drawing.Point(6, 380);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(100, 100);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 6;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            this.tabPage5.Controls.Add(this.fillBiomaterial);
+            this.tabPage5.Controls.Add(this.label2);
+            this.tabPage5.Controls.Add(this.label1);
+            this.tabPage5.Controls.Add(this.patientFioTextBox);
+            this.tabPage5.Controls.Add(this.pictureBox2);
+            this.tabPage5.Controls.Add(this.txtDecode);
+            this.tabPage5.Controls.Add(this.Decode);
+            this.tabPage5.Controls.Add(this.txtEncode);
+            this.tabPage5.Controls.Add(this.Encode);
+            this.tabPage5.Controls.Add(this.btnDecode);
+            this.tabPage5.Controls.Add(this.btnEncode);
+            this.tabPage5.Controls.Add(this.pic);
+            this.tabPage5.Location = new System.Drawing.Point(4, 24);
+            this.tabPage5.Name = "tabPage5";
+            this.tabPage5.Size = new System.Drawing.Size(570, 486);
+            this.tabPage5.TabIndex = 4;
+            this.tabPage5.Text = "Пием биоматериала";
+            this.tabPage5.UseVisualStyleBackColor = true;
+            // 
+            // tabPage6
+            // 
+            this.tabPage6.Controls.Add(this.pictureBox3);
+            this.tabPage6.Location = new System.Drawing.Point(4, 24);
+            this.tabPage6.Name = "tabPage6";
+            this.tabPage6.Size = new System.Drawing.Size(570, 486);
+            this.tabPage6.TabIndex = 5;
+            this.tabPage6.Text = "Создать отчет";
+            this.tabPage6.UseVisualStyleBackColor = true;
+            // 
+            // pic
+            // 
+            this.pic.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.pic.Location = new System.Drawing.Point(96, 31);
+            this.pic.Name = "pic";
+            this.pic.Size = new System.Drawing.Size(382, 169);
+            this.pic.TabIndex = 3;
+            this.pic.TabStop = false;
+            // 
+            // txtDecode
+            // 
+            this.txtDecode.Location = new System.Drawing.Point(202, 278);
+            this.txtDecode.Name = "txtDecode";
+            this.txtDecode.Size = new System.Drawing.Size(146, 23);
+            this.txtDecode.TabIndex = 12;
+            // 
+            // Decode
+            // 
+            this.Decode.AutoSize = true;
+            this.Decode.Location = new System.Drawing.Point(120, 285);
+            this.Decode.Name = "Decode";
+            this.Decode.Size = new System.Drawing.Size(44, 15);
+            this.Decode.TabIndex = 11;
+            this.Decode.Text = "Раскод";
+            // 
+            // txtEncode
+            // 
+            this.txtEncode.Location = new System.Drawing.Point(202, 245);
+            this.txtEncode.Name = "txtEncode";
+            this.txtEncode.Size = new System.Drawing.Size(146, 23);
+            this.txtEncode.TabIndex = 10;
+            // 
+            // Encode
+            // 
+            this.Encode.AutoSize = true;
+            this.Encode.Location = new System.Drawing.Point(120, 252);
+            this.Encode.Name = "Encode";
+            this.Encode.Size = new System.Drawing.Size(39, 15);
+            this.Encode.TabIndex = 9;
+            this.Encode.Text = "Закод";
+            // 
+            // btnDecode
+            // 
+            this.btnDecode.Location = new System.Drawing.Point(367, 275);
+            this.btnDecode.Name = "btnDecode";
+            this.btnDecode.Size = new System.Drawing.Size(95, 23);
+            this.btnDecode.TabIndex = 8;
+            this.btnDecode.Text = "Раскодировать";
+            this.btnDecode.UseVisualStyleBackColor = true;
+            this.btnDecode.Click += new System.EventHandler(this.btnDecode_Click);
+            // 
+            // btnEncode
+            // 
+            this.btnEncode.Location = new System.Drawing.Point(367, 242);
+            this.btnEncode.Name = "btnEncode";
+            this.btnEncode.Size = new System.Drawing.Size(95, 23);
+            this.btnEncode.TabIndex = 7;
+            this.btnEncode.Text = "Закодировать";
+            this.btnEncode.UseVisualStyleBackColor = true;
+            this.btnEncode.Click += new System.EventHandler(this.btnEncode_Click);
             // 
             // pictureBox2
             // 
@@ -227,7 +322,7 @@ namespace pp._05
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(100, 100);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox2.TabIndex = 7;
+            this.pictureBox2.TabIndex = 13;
             this.pictureBox2.TabStop = false;
             // 
             // pictureBox3
@@ -240,15 +335,41 @@ namespace pp._05
             this.pictureBox3.TabIndex = 7;
             this.pictureBox3.TabStop = false;
             // 
-            // pictureBox4
+            // patientFioTextBox
             // 
-            this.pictureBox4.Image = global::pp._05.Properties.Resources.logo;
-            this.pictureBox4.Location = new System.Drawing.Point(6, 380);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(100, 100);
-            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox4.TabIndex = 8;
-            this.pictureBox4.TabStop = false;
+            this.patientFioTextBox.Location = new System.Drawing.Point(123, 344);
+            this.patientFioTextBox.Name = "patientFioTextBox";
+            this.patientFioTextBox.Size = new System.Drawing.Size(186, 23);
+            this.patientFioTextBox.TabIndex = 15;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(202, 227);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(127, 15);
+            this.label1.TabIndex = 16;
+            this.label1.Text = "Введите номер услуги";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(131, 326);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(84, 15);
+            this.label2.TabIndex = 17;
+            this.label2.Text = "ФИО пациента";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
+            // 
+            // fillBiomaterial
+            // 
+            this.fillBiomaterial.Location = new System.Drawing.Point(331, 340);
+            this.fillBiomaterial.Name = "fillBiomaterial";
+            this.fillBiomaterial.Size = new System.Drawing.Size(130, 29);
+            this.fillBiomaterial.TabIndex = 18;
+            this.fillBiomaterial.Text = "Загрузить данные";
+            this.fillBiomaterial.UseVisualStyleBackColor = true;
+            this.fillBiomaterial.Click += new System.EventHandler(this.fillBiomaterial_Click);
             // 
             // LaborantForm
             // 
@@ -263,14 +384,16 @@ namespace pp._05
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.mainPic)).EndInit();
-            this.tabPage2.ResumeLayout(false);
-            this.tabPage3.ResumeLayout(false);
-            this.tabPage4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mainPic)).EndInit();
+            this.tabPage4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+            this.tabPage5.ResumeLayout(false);
+            this.tabPage5.PerformLayout();
+            this.tabPage6.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pic)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -286,15 +409,26 @@ namespace pp._05
         private System.Windows.Forms.Label roleStatic;
         private System.Windows.Forms.Label fioStatic;
         private System.Windows.Forms.Label fioLabel;
-        private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.TabPage tabPage4;
         private System.Windows.Forms.Button analizerButton;
         private System.Windows.Forms.Timer timerLogout;
         private System.Windows.Forms.Label labelCountdown;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pictureBox4;
+        private System.Windows.Forms.TabPage tabPage5;
+        private System.Windows.Forms.TextBox txtDecode;
+        private System.Windows.Forms.Label Decode;
+        private System.Windows.Forms.TextBox txtEncode;
+        private System.Windows.Forms.Label Encode;
+        private System.Windows.Forms.Button btnDecode;
+        private System.Windows.Forms.Button btnEncode;
+        private System.Windows.Forms.PictureBox pic;
+        private System.Windows.Forms.TabPage tabPage6;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBox3;
-        private System.Windows.Forms.PictureBox pictureBox4;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.MaskedTextBox patientFioTextBox;
+        private System.Windows.Forms.Button fillBiomaterial;
     }
 }

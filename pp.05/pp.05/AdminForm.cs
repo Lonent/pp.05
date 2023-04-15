@@ -18,14 +18,6 @@ namespace pp._05
             fioLabel.Text =  name ;
 
                 roleLabel.Text = "Адмитнистратор";
-                mainPic.ImageLocation = @"C:\Users\mlkvm\Desktop\sharaga\Resources\admin.png";
-                mainPic.SizeMode = PictureBoxSizeMode.Zoom;
-
-          //      roleLabel.Text = "Лаборант-исследователь";
-            //    mainPic.ImageLocation = @"C:\Users\mlkvm\Desktop\sharaga\Resources\laborant_2.png";
-              //  mainPic.SizeMode = PictureBoxSizeMode.Zoom;
-            
-                //roleLabel.Text = "Бухгалтер";
             
         }
 

@@ -106,17 +106,19 @@ namespace pp._05
                         mainForm.Show();
                         this.Hide();
                     }
-                    //else if (userType == "3")
-                    //{
+                    else if (userType == "3")
+                    {
+                        AccountantForm mainForm = new AccountantForm(name);
+                        mainForm.Show();
+                        this.Hide();
+                    }
+                        // else if (userType == "4")
+                        // {
 
-                    // }
-                    // else if (userType == "4")
-                    // {
 
+                        // }
 
-                    // }
-
-                }
+                    }
             }
             if (isFirstLoginAttempt)
             {

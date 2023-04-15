@@ -29,24 +29,25 @@ namespace pp._05
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AdminForm));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.mainPic = new System.Windows.Forms.PictureBox();
             this.roleLabel = new System.Windows.Forms.Label();
             this.exitButton = new System.Windows.Forms.Button();
             this.roleStatic = new System.Windows.Forms.Label();
             this.fioStatic = new System.Windows.Forms.Label();
             this.fioLabel = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.label2 = new System.Windows.Forms.Label();
-            this.patientIdLabel = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.mainPic = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.mainPic)).BeginInit();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mainPic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
@@ -54,6 +55,8 @@ namespace pp._05
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tabPage3);
+            this.tabControl1.Controls.Add(this.tabPage4);
             this.tabControl1.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
@@ -79,14 +82,6 @@ namespace pp._05
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Личный кабинет";
             this.tabPage1.Click += new System.EventHandler(this.tabPage1_Click);
-            // 
-            // mainPic
-            // 
-            this.mainPic.Location = new System.Drawing.Point(20, 17);
-            this.mainPic.Name = "mainPic";
-            this.mainPic.Size = new System.Drawing.Size(100, 100);
-            this.mainPic.TabIndex = 0;
-            this.mainPic.TabStop = false;
             // 
             // roleLabel
             // 
@@ -142,38 +137,15 @@ namespace pp._05
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.pictureBox2);
-            this.tabPage2.Controls.Add(this.label2);
-            this.tabPage2.Controls.Add(this.patientIdLabel);
             this.tabPage2.ForeColor = System.Drawing.SystemColors.ActiveCaption;
             this.tabPage2.Location = new System.Drawing.Point(4, 24);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage2.Size = new System.Drawing.Size(570, 528);
             this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Добавить биоматериал";
+            this.tabPage2.Text = "Создать отчет";
             this.tabPage2.UseVisualStyleBackColor = true;
             this.tabPage2.Click += new System.EventHandler(this.tabPage2_Click);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label2.Location = new System.Drawing.Point(137, 19);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(74, 15);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Тип анализа";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
-            // 
-            // patientIdLabel
-            // 
-            this.patientIdLabel.AutoSize = true;
-            this.patientIdLabel.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.patientIdLabel.Location = new System.Drawing.Point(18, 19);
-            this.patientIdLabel.Name = "patientIdLabel";
-            this.patientIdLabel.Size = new System.Drawing.Size(77, 15);
-            this.patientIdLabel.TabIndex = 0;
-            this.patientIdLabel.Text = "ID Пациента";
             // 
             // pictureBox1
             // 
@@ -185,6 +157,16 @@ namespace pp._05
             this.pictureBox1.TabIndex = 7;
             this.pictureBox1.TabStop = false;
             // 
+            // mainPic
+            // 
+            this.mainPic.Image = ((System.Drawing.Image)(resources.GetObject("mainPic.Image")));
+            this.mainPic.Location = new System.Drawing.Point(20, 17);
+            this.mainPic.Name = "mainPic";
+            this.mainPic.Size = new System.Drawing.Size(100, 100);
+            this.mainPic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.mainPic.TabIndex = 0;
+            this.mainPic.TabStop = false;
+            // 
             // pictureBox2
             // 
             this.pictureBox2.Image = global::pp._05.Properties.Resources.logo;
@@ -194,6 +176,24 @@ namespace pp._05
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox2.TabIndex = 7;
             this.pictureBox2.TabStop = false;
+            // 
+            // tabPage3
+            // 
+            this.tabPage3.Location = new System.Drawing.Point(4, 24);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Size = new System.Drawing.Size(570, 528);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "Пользователи";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // tabPage4
+            // 
+            this.tabPage4.Location = new System.Drawing.Point(4, 24);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Size = new System.Drawing.Size(570, 528);
+            this.tabPage4.TabIndex = 3;
+            this.tabPage4.Text = "Материалы";
+            this.tabPage4.UseVisualStyleBackColor = true;
             // 
             // AdminForm
             // 
@@ -207,10 +207,9 @@ namespace pp._05
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.mainPic)).EndInit();
             this.tabPage2.ResumeLayout(false);
-            this.tabPage2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mainPic)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
 
@@ -227,9 +226,9 @@ namespace pp._05
         private System.Windows.Forms.Label fioStatic;
         private System.Windows.Forms.Label fioLabel;
         private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label patientIdLabel;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.TabPage tabPage4;
     }
 }

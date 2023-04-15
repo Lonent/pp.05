@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,6 +8,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ZXing;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
+using Npgsql;
 
 namespace pp._05
 {
@@ -20,9 +25,6 @@ namespace pp._05
             fioLabel.Text = name;
             timerLogout.Start();
             roleLabel.Text = "Лаборант";
-            mainPic.ImageLocation = @"C:\Users\mlkvm\Desktop\sharaga\Resources\laborant_1.jpeg";
-            mainPic.ImageLocation = @"C:\Users\mlkvm\Desktop\sharaga\Resources\laborant_1.jpeg";
-            mainPic.SizeMode = PictureBoxSizeMode.Zoom;
             timerLogout.Tag = 600;
             
         }
@@ -96,6 +98,102 @@ namespace pp._05
         private void pictureBox1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnDecode_Click(object sender, EventArgs e)
+        {
+            // считывание штрих кода с помощью reader 
+            BarcodeReader reader = new BarcodeReader();
+            var result = reader.Decode((Bitmap)pic.Image);
+
+            // цикл отображения результата в случае успешного декодирования
+            if (result != null)
+                txtDecode.Text = result.Text;
+        }
+
+        private string GenerateUniqueCode(int orderDigit)
+        {
+            Random rnd = new Random();
+            const string chars = "0123456789";
+            string date = DateTime.Now.ToString("ddMMyyyy");
+            string uniqueCode = new string(Enumerable.Repeat(chars, 6).Select(s => s[rnd.Next(s.Length)]).ToArray());
+            return $"{orderDigit}{date}{uniqueCode}";
+        }
+
+        private void btnEncode_Click(object sender, EventArgs e)
+        {
+            // генерация рандомного значения
+            Random rnd = new Random();
+            int orderDigit = int.Parse(txtEncode.Text);
+
+            // генерация уникального кода
+            string barcodeText = GenerateUniqueCode(orderDigit);
+
+            // Создание объекта записи штрих-кода
+            BarcodeWriter writer = new BarcodeWriter() { Format = BarcodeFormat.CODE_128 };
+            Bitmap barcodeBitmap = writer.Write(barcodeText);
+
+            // Создание нового PDF-документа
+            Document document = new Document();
+            PdfWriter pdfWriter = PdfWriter.GetInstance(document, new FileStream("barcode.pdf", FileMode.Create));
+            document.Open();
+            //document.NewPage();
+
+            // создание объекта изображения
+            iTextSharp.text.Image pdfImage = iTextSharp.text.Image.GetInstance(barcodeBitmap, System.Drawing.Imaging.ImageFormat.Bmp);
+
+            pdfImage.ScaleToFit(document.PageSize.Width, document.PageSize.Height);
+
+            document.Add(pdfImage);
+
+            document.Close();
+
+            // установка изображения в пдф
+            pic.Image = barcodeBitmap;
+
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+
+
+        private void fillBiomaterial_Click(object sender, EventArgs e)
+        {
+            // Retrieve patient id from the database using their name
+            string patientName = patientFioTextBox.Text;
+            int patientId = 0;
+            string connectionString = "Server=localhost;Port=5432;Database=pp.05;User Id=postgres;Password=0000;";
+            using (NpgsqlConnection connection = new NpgsqlConnection(connectionString))
+            {
+                connection.Open();
+                using (NpgsqlCommand command = new NpgsqlCommand($"SELECT id FROM patients WHERE full_name = '{patientName}'", connection))
+                {
+                    using (NpgsqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            patientId = reader.GetInt32(0);
+                        }
+                    }
+                }
+            }
+
+            // Update the blood table with the patient id and barcode
+            BarcodeReader brcreader = new BarcodeReader();
+            var result = brcreader.Decode((Bitmap)pic.Image);
+            string barcode = result.Text;
+            using (NpgsqlConnection connection = new NpgsqlConnection(connectionString))
+            {
+                connection.Open();
+                using (NpgsqlCommand command = new NpgsqlCommand($"INSERT INTO blood (patient, barcode) VALUES ({patientId}, '{barcode}') RETURNING id", connection))
+                {
+                    int bloodId = (int)command.ExecuteScalar();
+                }
+            }
         }
     }
 }
