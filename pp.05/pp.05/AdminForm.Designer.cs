@@ -38,14 +38,18 @@ namespace pp._05
             this.fioStatic = new System.Windows.Forms.Label();
             this.fioLabel = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.patientsGridView = new System.Windows.Forms.DataGridView();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.mainPic = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.addUserButton = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
+            this.tabPage3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.patientsGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mainPic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -54,9 +58,9 @@ namespace pp._05
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Controls.Add(this.tabPage4);
+            this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
@@ -147,6 +151,36 @@ namespace pp._05
             this.tabPage2.UseVisualStyleBackColor = true;
             this.tabPage2.Click += new System.EventHandler(this.tabPage2_Click);
             // 
+            // tabPage3
+            // 
+            this.tabPage3.Controls.Add(this.addUserButton);
+            this.tabPage3.Controls.Add(this.patientsGridView);
+            this.tabPage3.Location = new System.Drawing.Point(4, 24);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Size = new System.Drawing.Size(570, 528);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "Пользователи";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // tabPage4
+            // 
+            this.tabPage4.Location = new System.Drawing.Point(4, 24);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Size = new System.Drawing.Size(570, 528);
+            this.tabPage4.TabIndex = 3;
+            this.tabPage4.Text = "Материалы";
+            this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // patientsGridView
+            // 
+            this.patientsGridView.AllowUserToOrderColumns = true;
+            this.patientsGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.patientsGridView.Location = new System.Drawing.Point(3, 3);
+            this.patientsGridView.Name = "patientsGridView";
+            this.patientsGridView.Size = new System.Drawing.Size(564, 487);
+            this.patientsGridView.TabIndex = 0;
+            this.patientsGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.patientsGridView_CellContentClick);
+            // 
             // pictureBox1
             // 
             this.pictureBox1.Image = global::pp._05.Properties.Resources.logo;
@@ -177,23 +211,16 @@ namespace pp._05
             this.pictureBox2.TabIndex = 7;
             this.pictureBox2.TabStop = false;
             // 
-            // tabPage3
+            // addUserButton
             // 
-            this.tabPage3.Location = new System.Drawing.Point(4, 24);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(570, 528);
-            this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "Пользователи";
-            this.tabPage3.UseVisualStyleBackColor = true;
-            // 
-            // tabPage4
-            // 
-            this.tabPage4.Location = new System.Drawing.Point(4, 24);
-            this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Size = new System.Drawing.Size(570, 528);
-            this.tabPage4.TabIndex = 3;
-            this.tabPage4.Text = "Материалы";
-            this.tabPage4.UseVisualStyleBackColor = true;
+            this.addUserButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.addUserButton.Location = new System.Drawing.Point(387, 496);
+            this.addUserButton.Name = "addUserButton";
+            this.addUserButton.Size = new System.Drawing.Size(173, 24);
+            this.addUserButton.TabIndex = 39;
+            this.addUserButton.Text = "Добавить пользователя";
+            this.addUserButton.UseVisualStyleBackColor = true;
+            this.addUserButton.Click += new System.EventHandler(this.addUserButton_Click);
             // 
             // AdminForm
             // 
@@ -208,6 +235,8 @@ namespace pp._05
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
+            this.tabPage3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.patientsGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mainPic)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
@@ -230,5 +259,7 @@ namespace pp._05
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.TabPage tabPage4;
+        private System.Windows.Forms.DataGridView patientsGridView;
+        private System.Windows.Forms.Button addUserButton;
     }
 }

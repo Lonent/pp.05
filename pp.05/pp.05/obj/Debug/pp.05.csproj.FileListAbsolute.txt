@@ -116,3 +116,4 @@ C:\Users\mlkvm\Source\Repos\Lonent\pp.o5\pp.05\pp.05\bin\Debug\itextsharp.xml
 C:\Users\mlkvm\Source\Repos\Lonent\pp.o5\pp.05\pp.05\bin\Debug\zxing.xml
 C:\Users\mlkvm\Source\Repos\Lonent\pp.o5\pp.05\pp.05\bin\Debug\zxing.presentation.xml
 C:\Users\mlkvm\Source\Repos\Lonent\pp.o5\pp.05\pp.05\obj\Debug\pp._05.AccountantForm.resources
+C:\Users\mlkvm\Source\Repos\Lonent\pp.o5\pp.05\pp.05\obj\Debug\pp._05.AddPatientForm.resources

@@ -155,6 +155,7 @@ namespace pp._05
             this.Controls.Add(this.ButtonLogin);
             this.Name = "LoginForm";
             this.Text = "Вход";
+            this.Load += new System.EventHandler(this.LoginForm_Load_1);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCaptcha)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);

@@ -102,13 +102,21 @@ namespace pp._05
 
         private void btnDecode_Click(object sender, EventArgs e)
         {
-            // считывание штрих кода с помощью reader 
-            BarcodeReader reader = new BarcodeReader();
-            var result = reader.Decode((Bitmap)pic.Image);
+            try { 
 
-            // цикл отображения результата в случае успешного декодирования
-            if (result != null)
-                txtDecode.Text = result.Text;
+                // считывание штрих кода с помощью reader 
+                BarcodeReader reader = new BarcodeReader();
+                var result = reader.Decode((Bitmap)pic.Image);
+
+                // цикл отображения результата в случае успешного декодирования
+                if (result != null)
+                    txtDecode.Text = result.Text;
+            }
+            catch
+            {
+                MessageBox.Show("Отсутствует штрихкод.");
+                return;
+            }
         }
 
         private string GenerateUniqueCode(int orderDigit)
@@ -123,33 +131,43 @@ namespace pp._05
         private void btnEncode_Click(object sender, EventArgs e)
         {
             // генерация рандомного значения
+
+            if (string.IsNullOrEmpty(txtEncode.Text))
+            {
+                MessageBox.Show("Поле кода пустое. Пожалуйста, введите значение.");
+                return;
+            }
+            else { 
             Random rnd = new Random();
-            int orderDigit = int.Parse(txtEncode.Text);
+                int orderDigit = int.Parse(txtEncode.Text);
 
-            // генерация уникального кода
-            string barcodeText = GenerateUniqueCode(orderDigit);
+                // генерация уникального кода
+                string barcodeText = GenerateUniqueCode(orderDigit);
 
-            // Создание объекта записи штрих-кода
-            BarcodeWriter writer = new BarcodeWriter() { Format = BarcodeFormat.CODE_128 };
-            Bitmap barcodeBitmap = writer.Write(barcodeText);
+                // Создание объекта записи штрих-кода
+                BarcodeWriter writer = new BarcodeWriter() { Format = BarcodeFormat.CODE_128 };
+                Bitmap barcodeBitmap = writer.Write(barcodeText);
 
-            // Создание нового PDF-документа
-            Document document = new Document();
-            PdfWriter pdfWriter = PdfWriter.GetInstance(document, new FileStream("barcode.pdf", FileMode.Create));
-            document.Open();
-            //document.NewPage();
+                // Создание нового PDF-документа
+                Document document = new Document();
+                PdfWriter pdfWriter = PdfWriter.GetInstance(document, new FileStream("barcode.pdf", FileMode.Create));
+                document.Open();
+                //document.NewPage();
 
-            // создание объекта изображения
-            iTextSharp.text.Image pdfImage = iTextSharp.text.Image.GetInstance(barcodeBitmap, System.Drawing.Imaging.ImageFormat.Bmp);
+                // создание объекта изображения
+                iTextSharp.text.Image pdfImage = iTextSharp.text.Image.GetInstance(barcodeBitmap, System.Drawing.Imaging.ImageFormat.Bmp);
 
-            pdfImage.ScaleToFit(document.PageSize.Width, document.PageSize.Height);
+                pdfImage.ScaleToFit(document.PageSize.Width, document.PageSize.Height);
 
-            document.Add(pdfImage);
+                document.Add(pdfImage);
 
-            document.Close();
+                document.Close();
 
-            // установка изображения в пдф
-            pic.Image = barcodeBitmap;
+                // установка изображения в пдф
+                pic.Image = barcodeBitmap;
+            }
+            
+            
 
 
         }
@@ -163,6 +181,13 @@ namespace pp._05
 
         private void fillBiomaterial_Click(object sender, EventArgs e)
         {
+            // Check if patientFioTextBox is empty
+            if (string.IsNullOrEmpty(patientFioTextBox.Text))
+            {
+                MessageBox.Show("Поле ФИО пациента не может быть пустым");
+                return;
+            }
+
             // Retrieve patient id from the database using their name
             string patientName = patientFioTextBox.Text;
             int patientId = 0;
@@ -174,12 +199,27 @@ namespace pp._05
                 {
                     using (NpgsqlDataReader reader = command.ExecuteReader())
                     {
-                        while (reader.Read())
+                        if (reader.HasRows)
                         {
-                            patientId = reader.GetInt32(0);
+                            while (reader.Read())
+                            {
+                                patientId = reader.GetInt32(0);
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("Пациент не найден в базе данных");
+                            return;
                         }
                     }
                 }
+            }
+
+            // Check if txtEncode is empty
+            if (string.IsNullOrEmpty(txtEncode.Text))
+            {
+                MessageBox.Show("Код штрих-кода не может быть пустым");
+                return;
             }
 
             // Update the blood table with the patient id and barcode
@@ -189,11 +229,18 @@ namespace pp._05
             using (NpgsqlConnection connection = new NpgsqlConnection(connectionString))
             {
                 connection.Open();
-                using (NpgsqlCommand command = new NpgsqlCommand($"INSERT INTO blood (patient, barcode) VALUES ({patientId}, '{barcode}') RETURNING id", connection))
+                using (NpgsqlCommand insertCommand = new NpgsqlCommand($"INSERT INTO blood (patient, barcode, date) VALUES ({patientId}, '{barcode}', CURRENT_DATE) RETURNING id", connection))
                 {
-                    int bloodId = (int)command.ExecuteScalar();
+                    int bloodId = (int)insertCommand.ExecuteScalar();
+                    MessageBox.Show("Биоматериалы успешно добавлены");
                 }
             }
         }
+
+        private void patientFioTextBox_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
+        {
+
+        }
+
     }
 }

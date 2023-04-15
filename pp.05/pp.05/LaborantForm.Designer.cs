@@ -40,36 +40,36 @@ namespace pp._05
             this.roleStatic = new System.Windows.Forms.Label();
             this.fioStatic = new System.Windows.Forms.Label();
             this.fioLabel = new System.Windows.Forms.Label();
-            this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.analizerButton = new System.Windows.Forms.Button();
-            this.timerLogout = new System.Windows.Forms.Timer(this.components);
-            this.labelCountdown = new System.Windows.Forms.Label();
             this.tabPage5 = new System.Windows.Forms.TabPage();
-            this.tabPage6 = new System.Windows.Forms.TabPage();
-            this.pic = new System.Windows.Forms.PictureBox();
+            this.fillBiomaterial = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.patientFioTextBox = new System.Windows.Forms.MaskedTextBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.txtDecode = new System.Windows.Forms.TextBox();
             this.Decode = new System.Windows.Forms.Label();
             this.txtEncode = new System.Windows.Forms.TextBox();
             this.Encode = new System.Windows.Forms.Label();
             this.btnDecode = new System.Windows.Forms.Button();
             this.btnEncode = new System.Windows.Forms.Button();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pic = new System.Windows.Forms.PictureBox();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.analizerButton = new System.Windows.Forms.Button();
+            this.tabPage6 = new System.Windows.Forms.TabPage();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.patientFioTextBox = new System.Windows.Forms.MaskedTextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.fillBiomaterial = new System.Windows.Forms.Button();
+            this.timerLogout = new System.Windows.Forms.Timer(this.components);
+            this.labelCountdown = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mainPic)).BeginInit();
+            this.tabPage5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pic)).BeginInit();
             this.tabPage4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
-            this.tabPage5.SuspendLayout();
             this.tabPage6.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pic)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.SuspendLayout();
             // 
@@ -177,52 +177,6 @@ namespace pp._05
             this.fioLabel.Text = "fio";
             this.fioLabel.Click += new System.EventHandler(this.fioLabel_Click);
             // 
-            // tabPage4
-            // 
-            this.tabPage4.Controls.Add(this.pictureBox4);
-            this.tabPage4.Controls.Add(this.analizerButton);
-            this.tabPage4.Location = new System.Drawing.Point(4, 24);
-            this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Size = new System.Drawing.Size(570, 486);
-            this.tabPage4.TabIndex = 3;
-            this.tabPage4.Text = "Анализатор";
-            this.tabPage4.UseVisualStyleBackColor = true;
-            // 
-            // pictureBox4
-            // 
-            this.pictureBox4.Image = global::pp._05.Properties.Resources.logo;
-            this.pictureBox4.Location = new System.Drawing.Point(6, 380);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(100, 100);
-            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox4.TabIndex = 8;
-            this.pictureBox4.TabStop = false;
-            // 
-            // analizerButton
-            // 
-            this.analizerButton.Location = new System.Drawing.Point(52, 42);
-            this.analizerButton.Name = "analizerButton";
-            this.analizerButton.Size = new System.Drawing.Size(425, 71);
-            this.analizerButton.TabIndex = 7;
-            this.analizerButton.Text = "РАБОТАТЬ!";
-            this.analizerButton.UseVisualStyleBackColor = true;
-            this.analizerButton.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // timerLogout
-            // 
-            this.timerLogout.Interval = 1000;
-            this.timerLogout.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
-            // labelCountdown
-            // 
-            this.labelCountdown.AutoSize = true;
-            this.labelCountdown.Location = new System.Drawing.Point(20, 531);
-            this.labelCountdown.Name = "labelCountdown";
-            this.labelCountdown.Size = new System.Drawing.Size(30, 13);
-            this.labelCountdown.TabIndex = 10;
-            this.labelCountdown.Text = "Time";
-            this.labelCountdown.Click += new System.EventHandler(this.labelElapsedTime_Click);
-            // 
             // tabPage5
             // 
             this.tabPage5.Controls.Add(this.fillBiomaterial);
@@ -244,24 +198,52 @@ namespace pp._05
             this.tabPage5.Text = "Пием биоматериала";
             this.tabPage5.UseVisualStyleBackColor = true;
             // 
-            // tabPage6
+            // fillBiomaterial
             // 
-            this.tabPage6.Controls.Add(this.pictureBox3);
-            this.tabPage6.Location = new System.Drawing.Point(4, 24);
-            this.tabPage6.Name = "tabPage6";
-            this.tabPage6.Size = new System.Drawing.Size(570, 486);
-            this.tabPage6.TabIndex = 5;
-            this.tabPage6.Text = "Создать отчет";
-            this.tabPage6.UseVisualStyleBackColor = true;
+            this.fillBiomaterial.Location = new System.Drawing.Point(331, 340);
+            this.fillBiomaterial.Name = "fillBiomaterial";
+            this.fillBiomaterial.Size = new System.Drawing.Size(130, 29);
+            this.fillBiomaterial.TabIndex = 18;
+            this.fillBiomaterial.Text = "Загрузить данные";
+            this.fillBiomaterial.UseVisualStyleBackColor = true;
+            this.fillBiomaterial.Click += new System.EventHandler(this.fillBiomaterial_Click);
             // 
-            // pic
+            // label2
             // 
-            this.pic.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.pic.Location = new System.Drawing.Point(96, 31);
-            this.pic.Name = "pic";
-            this.pic.Size = new System.Drawing.Size(382, 169);
-            this.pic.TabIndex = 3;
-            this.pic.TabStop = false;
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(131, 326);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(84, 15);
+            this.label2.TabIndex = 17;
+            this.label2.Text = "ФИО пациента";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(202, 227);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(127, 15);
+            this.label1.TabIndex = 16;
+            this.label1.Text = "Введите номер услуги";
+            // 
+            // patientFioTextBox
+            // 
+            this.patientFioTextBox.Location = new System.Drawing.Point(123, 344);
+            this.patientFioTextBox.Name = "patientFioTextBox";
+            this.patientFioTextBox.Size = new System.Drawing.Size(186, 23);
+            this.patientFioTextBox.TabIndex = 15;
+            this.patientFioTextBox.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.patientFioTextBox_MaskInputRejected);
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::pp._05.Properties.Resources.logo;
+            this.pictureBox2.Location = new System.Drawing.Point(6, 380);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(100, 100);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 13;
+            this.pictureBox2.TabStop = false;
             // 
             // txtDecode
             // 
@@ -315,15 +297,55 @@ namespace pp._05
             this.btnEncode.UseVisualStyleBackColor = true;
             this.btnEncode.Click += new System.EventHandler(this.btnEncode_Click);
             // 
-            // pictureBox2
+            // pic
             // 
-            this.pictureBox2.Image = global::pp._05.Properties.Resources.logo;
-            this.pictureBox2.Location = new System.Drawing.Point(6, 380);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(100, 100);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox2.TabIndex = 13;
-            this.pictureBox2.TabStop = false;
+            this.pic.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.pic.Location = new System.Drawing.Point(96, 31);
+            this.pic.Name = "pic";
+            this.pic.Size = new System.Drawing.Size(382, 169);
+            this.pic.TabIndex = 3;
+            this.pic.TabStop = false;
+            // 
+            // tabPage4
+            // 
+            this.tabPage4.Controls.Add(this.pictureBox4);
+            this.tabPage4.Controls.Add(this.analizerButton);
+            this.tabPage4.Location = new System.Drawing.Point(4, 24);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Size = new System.Drawing.Size(570, 486);
+            this.tabPage4.TabIndex = 3;
+            this.tabPage4.Text = "Анализатор";
+            this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // pictureBox4
+            // 
+            this.pictureBox4.Image = global::pp._05.Properties.Resources.logo;
+            this.pictureBox4.Location = new System.Drawing.Point(6, 380);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(100, 100);
+            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox4.TabIndex = 8;
+            this.pictureBox4.TabStop = false;
+            // 
+            // analizerButton
+            // 
+            this.analizerButton.Location = new System.Drawing.Point(52, 42);
+            this.analizerButton.Name = "analizerButton";
+            this.analizerButton.Size = new System.Drawing.Size(425, 71);
+            this.analizerButton.TabIndex = 7;
+            this.analizerButton.Text = "РАБОТАТЬ!";
+            this.analizerButton.UseVisualStyleBackColor = true;
+            this.analizerButton.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // tabPage6
+            // 
+            this.tabPage6.Controls.Add(this.pictureBox3);
+            this.tabPage6.Location = new System.Drawing.Point(4, 24);
+            this.tabPage6.Name = "tabPage6";
+            this.tabPage6.Size = new System.Drawing.Size(570, 486);
+            this.tabPage6.TabIndex = 5;
+            this.tabPage6.Text = "Создать отчет";
+            this.tabPage6.UseVisualStyleBackColor = true;
             // 
             // pictureBox3
             // 
@@ -335,41 +357,20 @@ namespace pp._05
             this.pictureBox3.TabIndex = 7;
             this.pictureBox3.TabStop = false;
             // 
-            // patientFioTextBox
+            // timerLogout
             // 
-            this.patientFioTextBox.Location = new System.Drawing.Point(123, 344);
-            this.patientFioTextBox.Name = "patientFioTextBox";
-            this.patientFioTextBox.Size = new System.Drawing.Size(186, 23);
-            this.patientFioTextBox.TabIndex = 15;
+            this.timerLogout.Interval = 1000;
+            this.timerLogout.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // label1
+            // labelCountdown
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(202, 227);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(127, 15);
-            this.label1.TabIndex = 16;
-            this.label1.Text = "Введите номер услуги";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(131, 326);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(84, 15);
-            this.label2.TabIndex = 17;
-            this.label2.Text = "ФИО пациента";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
-            // 
-            // fillBiomaterial
-            // 
-            this.fillBiomaterial.Location = new System.Drawing.Point(331, 340);
-            this.fillBiomaterial.Name = "fillBiomaterial";
-            this.fillBiomaterial.Size = new System.Drawing.Size(130, 29);
-            this.fillBiomaterial.TabIndex = 18;
-            this.fillBiomaterial.Text = "Загрузить данные";
-            this.fillBiomaterial.UseVisualStyleBackColor = true;
-            this.fillBiomaterial.Click += new System.EventHandler(this.fillBiomaterial_Click);
+            this.labelCountdown.AutoSize = true;
+            this.labelCountdown.Location = new System.Drawing.Point(20, 531);
+            this.labelCountdown.Name = "labelCountdown";
+            this.labelCountdown.Size = new System.Drawing.Size(30, 13);
+            this.labelCountdown.TabIndex = 10;
+            this.labelCountdown.Text = "Time";
+            this.labelCountdown.Click += new System.EventHandler(this.labelElapsedTime_Click);
             // 
             // LaborantForm
             // 
@@ -386,13 +387,13 @@ namespace pp._05
             this.tabPage1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mainPic)).EndInit();
-            this.tabPage4.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             this.tabPage5.ResumeLayout(false);
             this.tabPage5.PerformLayout();
-            this.tabPage6.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pic)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pic)).EndInit();
+            this.tabPage4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+            this.tabPage6.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
