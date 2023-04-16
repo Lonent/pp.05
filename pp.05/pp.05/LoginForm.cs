@@ -53,6 +53,24 @@ namespace pp._05
                 Font font = new Font("Arial", 20, FontStyle.Bold);
                 Brush brush = new SolidBrush(Color.Black);
                 graphics.DrawString(captchaValue, font, brush, 10, 10);
+
+                // Add some noise to the image
+                for (int i = 0; i < 20; i++)
+                {
+                    int x1 = random.Next(bitmap.Width);
+                    int y1 = random.Next(bitmap.Height);
+                    int x2 = random.Next(bitmap.Width);
+                    int y2 = random.Next(bitmap.Height);
+                    graphics.DrawLine(Pens.LightGray, x1, y1, x2, y2);
+                }
+
+                for (int i = 0; i < 50; i++)
+                {
+                    int x = random.Next(bitmap.Width);
+                    int y = random.Next(bitmap.Height);
+                    bitmap.SetPixel(x, y, Color.LightGray);
+                }
+
                 pictureBoxCaptcha.Image = bitmap;
             }
         }

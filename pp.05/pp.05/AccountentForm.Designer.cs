@@ -42,6 +42,9 @@ namespace pp._05
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.label1 = new System.Windows.Forms.Label();
+            this.innsuranceNameTextBox = new System.Windows.Forms.TextBox();
+            this.genAccountButton = new System.Windows.Forms.Button();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -180,6 +183,9 @@ namespace pp._05
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.label1);
+            this.tabPage3.Controls.Add(this.innsuranceNameTextBox);
+            this.tabPage3.Controls.Add(this.genAccountButton);
             this.tabPage3.Controls.Add(this.pictureBox3);
             this.tabPage3.Location = new System.Drawing.Point(4, 24);
             this.tabPage3.Name = "tabPage3";
@@ -188,6 +194,33 @@ namespace pp._05
             this.tabPage3.Text = "Создать счет СК";
             this.tabPage3.UseVisualStyleBackColor = true;
             this.tabPage3.Click += new System.EventHandler(this.tabPage3_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(101, 60);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(218, 15);
+            this.label1.TabIndex = 11;
+            this.label1.Text = "Введите название страховой компании";
+            // 
+            // innsuranceNameTextBox
+            // 
+            this.innsuranceNameTextBox.Location = new System.Drawing.Point(104, 78);
+            this.innsuranceNameTextBox.Name = "innsuranceNameTextBox";
+            this.innsuranceNameTextBox.Size = new System.Drawing.Size(215, 23);
+            this.innsuranceNameTextBox.TabIndex = 10;
+            this.innsuranceNameTextBox.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            // 
+            // genAccountButton
+            // 
+            this.genAccountButton.Location = new System.Drawing.Point(325, 77);
+            this.genAccountButton.Name = "genAccountButton";
+            this.genAccountButton.Size = new System.Drawing.Size(116, 23);
+            this.genAccountButton.TabIndex = 9;
+            this.genAccountButton.Text = "Создать";
+            this.genAccountButton.UseVisualStyleBackColor = true;
+            this.genAccountButton.Click += new System.EventHandler(this.button1_Click);
             // 
             // pictureBox3
             // 
@@ -216,6 +249,7 @@ namespace pp._05
             this.tabPage2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.tabPage3.ResumeLayout(false);
+            this.tabPage3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.ResumeLayout(false);
 
@@ -236,5 +270,8 @@ namespace pp._05
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.Button genAccountButton;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox innsuranceNameTextBox;
     }
 }

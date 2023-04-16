@@ -53,6 +53,8 @@ namespace pp._05
             this.btnDecode = new System.Windows.Forms.Button();
             this.btnEncode = new System.Windows.Forms.Button();
             this.pic = new System.Windows.Forms.PictureBox();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.analizerButton = new System.Windows.Forms.Button();
@@ -67,6 +69,8 @@ namespace pp._05
             this.tabPage5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic)).BeginInit();
+            this.tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tabPage4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.tabPage6.SuspendLayout();
@@ -77,6 +81,7 @@ namespace pp._05
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage5);
+            this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage4);
             this.tabControl1.Controls.Add(this.tabPage6);
             this.tabControl1.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -103,6 +108,7 @@ namespace pp._05
             this.tabPage1.Size = new System.Drawing.Size(570, 486);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Личный кабинет";
+            this.tabPage1.Click += new System.EventHandler(this.tabPage1_Click);
             // 
             // pictureBox1
             // 
@@ -195,8 +201,9 @@ namespace pp._05
             this.tabPage5.Name = "tabPage5";
             this.tabPage5.Size = new System.Drawing.Size(570, 486);
             this.tabPage5.TabIndex = 4;
-            this.tabPage5.Text = "Пием биоматериала";
+            this.tabPage5.Text = "Прием биоматериала";
             this.tabPage5.UseVisualStyleBackColor = true;
+            this.tabPage5.Click += new System.EventHandler(this.tabPage5_Click);
             // 
             // fillBiomaterial
             // 
@@ -306,6 +313,24 @@ namespace pp._05
             this.pic.TabIndex = 3;
             this.pic.TabStop = false;
             // 
+            // tabPage2
+            // 
+            this.tabPage2.Controls.Add(this.dataGridView1);
+            this.tabPage2.Location = new System.Drawing.Point(4, 24);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Size = new System.Drawing.Size(570, 486);
+            this.tabPage2.TabIndex = 6;
+            this.tabPage2.Text = "Заказы";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(2, 1);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(567, 449);
+            this.dataGridView1.TabIndex = 0;
+            // 
             // tabPage4
             // 
             this.tabPage4.Controls.Add(this.pictureBox4);
@@ -391,6 +416,8 @@ namespace pp._05
             this.tabPage5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic)).EndInit();
+            this.tabPage2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.tabPage4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             this.tabPage6.ResumeLayout(false);
@@ -431,5 +458,7 @@ namespace pp._05
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.MaskedTextBox patientFioTextBox;
         private System.Windows.Forms.Button fillBiomaterial;
+        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.DataGridView dataGridView1;
     }
 }

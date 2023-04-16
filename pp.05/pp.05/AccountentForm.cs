@@ -3,10 +3,14 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
+using Npgsql;
 
 namespace pp._05
 {
@@ -15,15 +19,15 @@ namespace pp._05
         public AccountantForm(string name)
         {
             InitializeComponent();
-            fioLabel.Text =  name ;
-            roleLabel.Text = "Бухгалтер"; 
+            fioLabel.Text = name;
+            roleLabel.Text = "Бухгалтер";
         }
 
         private void imgBox1_SizeChanged(object sender, EventArgs e)
         {
             if (mainPic.Image != null)
             {
-                
+
             }
         }
 
@@ -45,7 +49,7 @@ namespace pp._05
 
         private void exitButton_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         private void groupBox1_Enter(object sender, EventArgs e)
@@ -53,7 +57,7 @@ namespace pp._05
 
         }
 
-       
+
 
         private void roleLabel_Click(object sender, EventArgs e)
         {
@@ -88,6 +92,69 @@ namespace pp._05
         }
 
         private void tabPage3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            string connectionString = "Server=localhost;Port=5432;Database=pp.05;User Id=postgres;Password=0000;";
+            using (NpgsqlConnection connection = new NpgsqlConnection(connectionString))
+            {
+                connection.Open();
+                using (NpgsqlCommand command = new NpgsqlCommand($@"SELECT o.full_name, o.price 
+                                                           FROM orders o
+                                                           JOIN patients p ON o.patient_id = p.id 
+                                                           WHERE p.innsurance_name = '{innsuranceNameTextBox.Text}'", connection))
+                {
+                    using (NpgsqlDataReader reader = command.ExecuteReader())
+                    {
+                        Dictionary<string, decimal> pricesByFullName = new Dictionary<string, decimal>();
+                        while (reader.Read())
+                        {
+                            string fullName = reader.GetString(0);
+                            decimal price = reader.GetDecimal(1);
+
+                            if (pricesByFullName.ContainsKey(fullName))
+                            {
+                                pricesByFullName[fullName] += price;
+                            }
+                            else
+                            {
+                                pricesByFullName[fullName] = price;
+                            }
+                        }
+
+                        Document document = new Document();
+                        PdfWriter pdfWriter = PdfWriter.GetInstance(document, new FileStream($"{innsuranceNameTextBox.Text}.pdf", FileMode.Create));
+                        document.Open();
+
+                        // Write the data to the PDF
+                        foreach (KeyValuePair<string, decimal> entry in pricesByFullName)
+                        {
+                            string fullName = entry.Key;
+                            decimal total = entry.Value;
+
+                            // Write the full name and total price for the person
+                            document.Add(new Paragraph($"Name: {fullName} - Total price: {total}"));
+
+                            // Do something with the data, for example add them to a table or display them in a DataGridView
+                        }
+
+                        // Write the overall total price for all persons
+                        decimal overallTotal = pricesByFullName.Values.Sum();
+                        document.Add(new Paragraph($"Overall total price: {overallTotal}"));
+
+                        document.Close();
+                    }
+                }
+            }
+        }
+
+
+
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
         }

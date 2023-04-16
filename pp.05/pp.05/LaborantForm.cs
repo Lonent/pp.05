@@ -208,7 +208,14 @@ namespace pp._05
                         }
                         else
                         {
-                            MessageBox.Show("Пациент не найден в базе данных");
+                            // Patient not found in the database
+                            DialogResult dialogResult = MessageBox.Show("Пациент не найден в базе данных. Хотите добавить нового пациента?", "Пациент не найден", MessageBoxButtons.YesNo);
+                            if (dialogResult == DialogResult.Yes)
+                            {
+                                // Redirect user to the AddPatientForm form
+                                AddPatientForm addPatientForm = new AddPatientForm();
+                                addPatientForm.Show();
+                            }
                             return;
                         }
                     }
@@ -242,5 +249,14 @@ namespace pp._05
 
         }
 
+        private void tabPage5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tabPage1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
