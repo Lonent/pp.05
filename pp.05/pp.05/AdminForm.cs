@@ -35,7 +35,7 @@ namespace pp._05
 
         private void Form2_Load(object sender, EventArgs e)
         {
-            string connectionString = "Server=localhost;Port=5432;Database=pp05;User Id=postgres;Password=1432;";
+            string connectionString = "Server=localhost;Port=5432;Database=pp.05;User Id=postgres;Password=0000;";
             using (NpgsqlConnection connection = new NpgsqlConnection(connectionString))
             {
                 connection.Open();
@@ -163,7 +163,7 @@ namespace pp._05
 
         private void LoadMaterials()
         {
-            string connectionString = "Server=localhost;Port=5432;Database=pp05;User Id=postgres;Password=1432;";
+            string connectionString = "Server=localhost;Port=5432;Database=pp.05;User Id=postgres;Password=0000;";
             using (NpgsqlConnection dbConnection = new NpgsqlConnection(connectionString))
             {
                 dbConnection.Open();
@@ -207,7 +207,7 @@ namespace pp._05
             string count = materialsGridView.Rows[index].Cells[3].Value.ToString();
 
             // Create a connection
-            string connectionString = "Server=localhost;Port=5432;Database=pp05;User Id=postgres;Password=1432;";
+            string connectionString = "Server=localhost;Port=5432;Database=pp.05;User Id=postgres;Password=0000;";
             using (NpgsqlConnection dbConnection = new NpgsqlConnection(connectionString))
             {
                 // Execute the query
@@ -261,7 +261,7 @@ namespace pp._05
             string count = materialsGridView.Rows[index].Cells[3].Value.ToString();
 
             // Create a connection
-            string connectionString = "Server=localhost;Port=5432;Database=pp05;User Id=postgres;Password=1432;";
+            string connectionString = "Server=localhost;Port=5432;Database=pp.05;User Id=postgres;Password=0000;";
             using (NpgsqlConnection dbConnection = new NpgsqlConnection(connectionString))
             {
                 // Execute the query
@@ -303,7 +303,7 @@ namespace pp._05
             string id = materialsGridView.Rows[index].Cells[2].Value.ToString();
 
             // Create a connection
-            string connectionString = "Server=localhost;Port=5432;Database=pp05;User Id=postgres;Password=1432;";
+            string connectionString = "Server=localhost;Port=5432;Database=pp.05;User Id=postgres;Password=0000;";
             using (NpgsqlConnection dbConnection = new NpgsqlConnection(connectionString))
             {
                 // Execute the query

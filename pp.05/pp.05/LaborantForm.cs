@@ -29,9 +29,13 @@ namespace pp._05
             
         }
 
+
+
+        private DataTable ordersTable;
+
         private void Laborant_Load(object sender, EventArgs e)
         {
-
+            LoadOrders();
         }
 
         private void fioLabel_Click(object sender, EventArgs e)
@@ -258,5 +262,238 @@ namespace pp._05
         {
 
         }
+
+
+        private void LoadOrders()
+        {
+            string connectionString = "Server=localhost;Port=5432;Database=pp.05;User Id=postgres;Password=0000;";
+            using (NpgsqlConnection connection = new NpgsqlConnection(connectionString))
+            {
+                connection.Open();
+                using (NpgsqlCommand command = new NpgsqlCommand("SELECT * FROM orders", connection))
+                {
+                    using (NpgsqlDataAdapter adapter = new NpgsqlDataAdapter(command))
+                    {
+                        DataTable dataTable = new DataTable();
+                        adapter.Fill(dataTable);
+                        if (string.IsNullOrEmpty(orderSearchField.Text))
+                        {
+                            ordersGridView.DataSource = dataTable;
+                        }
+                        else
+                        {
+                            SearchOrders(orderSearchField.Text);
+                        }
+
+                        ordersGridView.Columns[0].HeaderText = "date";
+                        ordersGridView.Columns[1].HeaderText = "service_id";
+                        ordersGridView.Columns[2].HeaderText = "patient_id";
+                        ordersGridView.Columns[3].HeaderText = "barcode";
+                        ordersGridView.Columns[4].HeaderText = "insurance_p";
+                        ordersGridView.Columns[5].HeaderText = "full_name";
+                        ordersGridView.Columns[6].HeaderText = "b_date";
+                        ordersGridView.Columns[7].HeaderText = "price";
+                        ordersGridView.Columns[8].HeaderText = "id";
+                    }
+                }
+            }
+        }
+
+        private void SearchOrders(string searchValue)
+        {
+            string connectionString = "Server=localhost;Port=5432;Database=pp.05;User Id=postgres;Password=0000;";
+            using (NpgsqlConnection connection = new NpgsqlConnection(connectionString))
+            {
+                connection.Open();
+                using (NpgsqlCommand command = new NpgsqlCommand($"SELECT * FROM orders WHERE date::text LIKE '%{searchValue}%' OR CAST(service_id AS TEXT) LIKE '%{searchValue}%' OR CAST(patient_id AS TEXT) LIKE '%{searchValue}%' OR CAST(barcode AS TEXT) LIKE '%{searchValue}%' OR insurance_p LIKE '%{searchValue}%' OR full_name LIKE '%{searchValue}%' OR b_date::text LIKE '%{searchValue}%' OR price LIKE '%{searchValue}%'", connection))
+                {
+                    using (NpgsqlDataAdapter adapter = new NpgsqlDataAdapter(command))
+                    {
+                        DataTable dataTable = new DataTable();
+                        adapter.Fill(dataTable);
+                        ordersGridView.DataSource = dataTable;
+                    }
+                }
+            }
+        }
+
+        private void orderSearchField_TextChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void addOrderButton_Click(object sender, EventArgs e)
+        {
+            // Check if a row is selected
+            if (ordersGridView.SelectedRows.Count != 1)
+            {
+                MessageBox.Show("Выберите одну строку!", "Внимание!");
+                return;
+            }
+
+            // Remember the selected row
+            int index = ordersGridView.SelectedRows[0].Index;
+
+            // Check if all fields are filled in
+            if (string.IsNullOrWhiteSpace(ordersGridView.Rows[index].Cells[0].Value?.ToString())
+                || string.IsNullOrWhiteSpace(ordersGridView.Rows[index].Cells[1].Value?.ToString())
+                || string.IsNullOrWhiteSpace(ordersGridView.Rows[index].Cells[2].Value?.ToString())
+                || string.IsNullOrWhiteSpace(ordersGridView.Rows[index].Cells[3].Value?.ToString())
+                || string.IsNullOrWhiteSpace(ordersGridView.Rows[index].Cells[4].Value?.ToString())
+                || string.IsNullOrWhiteSpace(ordersGridView.Rows[index].Cells[5].Value?.ToString())
+                || string.IsNullOrWhiteSpace(ordersGridView.Rows[index].Cells[6].Value?.ToString())
+                || string.IsNullOrWhiteSpace(ordersGridView.Rows[index].Cells[7].Value?.ToString()))
+            {
+                MessageBox.Show("Не все данные введены!", "Внимание!");
+                return;
+            }
+
+            // Read data
+            string date = ordersGridView.Rows[index].Cells[0].Value.ToString();
+            string service_id = ordersGridView.Rows[index].Cells[1].Value.ToString();
+            string patient_id = ordersGridView.Rows[index].Cells[2].Value.ToString();
+            string barcode = ordersGridView.Rows[index].Cells[3].Value.ToString();
+            string insurance_p = ordersGridView.Rows[index].Cells[4].Value.ToString();
+            string full_name = ordersGridView.Rows[index].Cells[5].Value.ToString();
+            string b_date = ordersGridView.Rows[index].Cells[6].Value.ToString();
+            string price = ordersGridView.Rows[index].Cells[7].Value.ToString();
+
+            // Create a connection
+            string connectionString = "Server=localhost;Port=5432;Database=pp.05;User Id=postgres;Password=0000;";
+            using (NpgsqlConnection dbConnection = new NpgsqlConnection(connectionString))
+            {
+                // Execute the query
+                dbConnection.Open();
+                string query = $"INSERT INTO orders (date, service_id, patient_id, barcode, insurance_p, full_name, b_date, price) VALUES ('{date}', '{service_id}', '{patient_id}', '{barcode}', '{insurance_p}', '{full_name}', '{b_date}', '{price}')";
+                using (NpgsqlCommand dbCommand = new NpgsqlCommand(query, dbConnection))
+                {
+                    if (dbCommand.ExecuteNonQuery() != 1)
+                        MessageBox.Show("Ошибка выполнения запроса!", "Ошибка!");
+                    else
+                        MessageBox.Show("Данные добавлены!", "Внимание!");
+                }
+                dbConnection.Close();
+            }
+            LoadOrders();
+        }
+
+        private void changeOrderButton_Click(object sender, EventArgs e)
+        {
+            // Check if a row is selected
+            if (ordersGridView.SelectedRows.Count != 1)
+            {
+                MessageBox.Show("Выберите одну строку!", "Внимание!");
+                return;
+            }
+
+            // Remember the selected row
+            int index = ordersGridView.SelectedRows[0].Index;
+
+            // Check if all fields are filled in
+            if (string.IsNullOrWhiteSpace(ordersGridView.Rows[index].Cells[0].Value?.ToString())
+                || string.IsNullOrWhiteSpace(ordersGridView.Rows[index].Cells[1].Value?.ToString())
+    || string.IsNullOrWhiteSpace(ordersGridView.Rows[index].Cells[2].Value?.ToString())
+    || string.IsNullOrWhiteSpace(ordersGridView.Rows[index].Cells[3].Value?.ToString())
+    || string.IsNullOrWhiteSpace(ordersGridView.Rows[index].Cells[4].Value?.ToString())
+    || string.IsNullOrWhiteSpace(ordersGridView.Rows[index].Cells[5].Value?.ToString())
+    || string.IsNullOrWhiteSpace(ordersGridView.Rows[index].Cells[6].Value?.ToString())
+    || string.IsNullOrWhiteSpace(ordersGridView.Rows[index].Cells[7].Value?.ToString())
+    || string.IsNullOrWhiteSpace(ordersGridView.Rows[index].Cells[8].Value?.ToString()))
+            {
+                MessageBox.Show("Не все данные введены!", "Внимание!");
+                return;
+            }
+
+            // Read data
+            string date = ordersGridView.Rows[index].Cells[0].Value.ToString();
+            string service_id = ordersGridView.Rows[index].Cells[1].Value.ToString();
+            string patient_id = ordersGridView.Rows[index].Cells[2].Value.ToString();
+            string barcode = ordersGridView.Rows[index].Cells[3].Value.ToString();
+            string insurance_p = ordersGridView.Rows[index].Cells[4].Value.ToString();
+            string full_name = ordersGridView.Rows[index].Cells[5].Value.ToString();
+            string b_date = ordersGridView.Rows[index].Cells[6].Value.ToString();
+            string price = ordersGridView.Rows[index].Cells[7].Value.ToString();
+            string id = ordersGridView.Rows[index].Cells[8].Value.ToString();
+
+            // Create a connection
+            string connectionString = "Server=localhost;Port=5432;Database=pp.05;User Id=postgres;Password=0000;";
+            using (NpgsqlConnection dbConnection = new NpgsqlConnection(connectionString))
+            {
+                // Execute the query
+                dbConnection.Open();
+                string query = $"UPDATE orders SET date = '{date}', service_id = '{service_id}', patient_id = '{patient_id}', barcode = '{barcode}', insurance_p = '{insurance_p}', full_name = '{full_name}', b_date = '{b_date}', price = '{price}' WHERE id = {id}";
+                using (NpgsqlCommand dbCommand = new NpgsqlCommand(query, dbConnection))
+                {
+                    if (dbCommand.ExecuteNonQuery() != 1)
+                        MessageBox.Show("Ошибка выполнения запроса!", "Ошибка!");
+                    else
+                    {
+                        MessageBox.Show("Данные изменены!", "Внимание!");
+                        ordersGridView.Rows.RemoveAt(index);
+                    }
+                }
+                dbConnection.Close();
+            }
+            LoadOrders();
+        }
+
+        private void deleteOrderButton_Click(object sender, EventArgs e)
+        {
+            // Check if a row is selected
+            if (ordersGridView.SelectedRows.Count != 1)
+            {
+                MessageBox.Show("Выберите одну строку!", "Внимание!");
+                return;
+            }
+            // Remember the selected row
+            int index = ordersGridView.SelectedRows[0].Index;
+
+            // Check if all fields are filled in
+            if (string.IsNullOrWhiteSpace(ordersGridView.Rows[index].Cells[8].Value?.ToString()))
+            {
+                MessageBox.Show("Не все данные введены!", "Внимание!");
+                return;
+            }
+
+            // Read data
+            string id = ordersGridView.Rows[index].Cells[8].Value.ToString();
+
+            // Create a connection
+            string connectionString = "Server=localhost;Port=5432;Database=pp.05;User Id=postgres;Password=0000;";
+            using (NpgsqlConnection dbConnection = new NpgsqlConnection(connectionString))
+            {
+                // Execute the query
+                dbConnection.Open();
+                string query = $"DELETE FROM orders WHERE id = {id}";
+                using (NpgsqlCommand dbCommand = new NpgsqlCommand(query, dbConnection))
+                {
+                    if (dbCommand.ExecuteNonQuery() != 1)
+                        MessageBox.Show("Ошибка выполнения запроса!", "Ошибка!");
+                    else
+                    {
+                        MessageBox.Show("Данные удалены!", "Внимание!");
+                        ordersGridView.Rows.RemoveAt(index);
+                    }
+                }
+                dbConnection.Close();
+            }
+        }
+
+        private void orderSearchButton_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void orderSearchField_TextChanged_1(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(orderSearchField.Text))
+            {
+                LoadOrders();
+            }
+            else
+            {
+                SearchOrders(orderSearchField.Text);
+            }
+        }
     }
-}
+    }

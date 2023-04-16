@@ -103,9 +103,9 @@ namespace pp._05
             {
                 connection.Open();
                 using (NpgsqlCommand command = new NpgsqlCommand($@"SELECT o.full_name, o.price 
-                                                           FROM orders o
-                                                           JOIN patients p ON o.patient_id = p.id 
-                                                           WHERE p.innsurance_name = '{innsuranceNameTextBox.Text}'", connection))
+                                                   FROM orders o
+                                                   JOIN patients p ON o.patient_id = p.id 
+                                                   WHERE p.insurance_name = '{innsuranceNameTextBox.Text}'", connection))
                 {
                     using (NpgsqlDataReader reader = command.ExecuteReader())
                     {
@@ -129,23 +129,20 @@ namespace pp._05
                         PdfWriter pdfWriter = PdfWriter.GetInstance(document, new FileStream($"{innsuranceNameTextBox.Text}.pdf", FileMode.Create));
                         document.Open();
 
-                        // Write the data to the PDF
                         foreach (KeyValuePair<string, decimal> entry in pricesByFullName)
                         {
                             string fullName = entry.Key;
                             decimal total = entry.Value;
 
-                            // Write the full name and total price for the person
                             document.Add(new Paragraph($"Name: {fullName} - Total price: {total}"));
-
-                            // Do something with the data, for example add them to a table or display them in a DataGridView
                         }
 
-                        // Write the overall total price for all persons
                         decimal overallTotal = pricesByFullName.Values.Sum();
                         document.Add(new Paragraph($"Overall total price: {overallTotal}"));
 
                         document.Close();
+
+                        MessageBox.Show($"PDF file saved to: {Path.GetFullPath($"{innsuranceNameTextBox.Text}.pdf")}");
                     }
                 }
             }

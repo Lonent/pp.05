@@ -182,3 +182,4 @@ C:\Users\Andrey\source\repos\pp.05\pp.05\pp.05\obj\Debug\pp.05.csproj.CoreCompil
 C:\Users\Andrey\source\repos\pp.05\pp.05\pp.05\obj\Debug\pp.05.csproj.CopyComplete
 C:\Users\Andrey\source\repos\pp.05\pp.05\pp.05\obj\Debug\pp.05.exe
 C:\Users\Andrey\source\repos\pp.05\pp.05\pp.05\obj\Debug\pp.05.pdb
+C:\Users\mlkvm\Source\Repos\Lonent\pp.o5\pp.05\pp.05\obj\Debug\pp._05.AddObjects.resources

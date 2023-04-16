@@ -54,7 +54,12 @@ namespace pp._05
             this.btnEncode = new System.Windows.Forms.Button();
             this.pic = new System.Windows.Forms.PictureBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.orderSearchButton = new System.Windows.Forms.Button();
+            this.orderSearchField = new System.Windows.Forms.TextBox();
+            this.deleteOrderButton = new System.Windows.Forms.Button();
+            this.changeOrderButton = new System.Windows.Forms.Button();
+            this.addOrderButton = new System.Windows.Forms.Button();
+            this.ordersGridView = new System.Windows.Forms.DataGridView();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.analizerButton = new System.Windows.Forms.Button();
@@ -70,7 +75,7 @@ namespace pp._05
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic)).BeginInit();
             this.tabPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ordersGridView)).BeginInit();
             this.tabPage4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.tabPage6.SuspendLayout();
@@ -315,7 +320,12 @@ namespace pp._05
             // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this.dataGridView1);
+            this.tabPage2.Controls.Add(this.orderSearchButton);
+            this.tabPage2.Controls.Add(this.orderSearchField);
+            this.tabPage2.Controls.Add(this.deleteOrderButton);
+            this.tabPage2.Controls.Add(this.changeOrderButton);
+            this.tabPage2.Controls.Add(this.addOrderButton);
+            this.tabPage2.Controls.Add(this.ordersGridView);
             this.tabPage2.Location = new System.Drawing.Point(4, 24);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Size = new System.Drawing.Size(570, 486);
@@ -323,13 +333,61 @@ namespace pp._05
             this.tabPage2.Text = "Заказы";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // dataGridView1
+            // orderSearchButton
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(2, 1);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(567, 449);
-            this.dataGridView1.TabIndex = 0;
+            this.orderSearchButton.Location = new System.Drawing.Point(211, 4);
+            this.orderSearchButton.Name = "orderSearchButton";
+            this.orderSearchButton.Size = new System.Drawing.Size(90, 23);
+            this.orderSearchButton.TabIndex = 5;
+            this.orderSearchButton.Text = "Найти";
+            this.orderSearchButton.UseVisualStyleBackColor = true;
+            this.orderSearchButton.Click += new System.EventHandler(this.orderSearchButton_Click);
+            // 
+            // orderSearchField
+            // 
+            this.orderSearchField.Location = new System.Drawing.Point(20, 4);
+            this.orderSearchField.Name = "orderSearchField";
+            this.orderSearchField.Size = new System.Drawing.Size(185, 23);
+            this.orderSearchField.TabIndex = 4;
+            this.orderSearchField.TextChanged += new System.EventHandler(this.orderSearchField_TextChanged_1);
+            // 
+            // deleteOrderButton
+            // 
+            this.deleteOrderButton.Location = new System.Drawing.Point(442, 456);
+            this.deleteOrderButton.Name = "deleteOrderButton";
+            this.deleteOrderButton.Size = new System.Drawing.Size(125, 26);
+            this.deleteOrderButton.TabIndex = 3;
+            this.deleteOrderButton.Text = "Удалить";
+            this.deleteOrderButton.UseVisualStyleBackColor = true;
+            this.deleteOrderButton.Click += new System.EventHandler(this.deleteOrderButton_Click);
+            // 
+            // changeOrderButton
+            // 
+            this.changeOrderButton.Location = new System.Drawing.Point(160, 456);
+            this.changeOrderButton.Name = "changeOrderButton";
+            this.changeOrderButton.Size = new System.Drawing.Size(125, 26);
+            this.changeOrderButton.TabIndex = 2;
+            this.changeOrderButton.Text = "Изменить";
+            this.changeOrderButton.UseVisualStyleBackColor = true;
+            this.changeOrderButton.Click += new System.EventHandler(this.changeOrderButton_Click);
+            // 
+            // addOrderButton
+            // 
+            this.addOrderButton.Location = new System.Drawing.Point(9, 456);
+            this.addOrderButton.Name = "addOrderButton";
+            this.addOrderButton.Size = new System.Drawing.Size(125, 26);
+            this.addOrderButton.TabIndex = 1;
+            this.addOrderButton.Text = "Добавить";
+            this.addOrderButton.UseVisualStyleBackColor = true;
+            this.addOrderButton.Click += new System.EventHandler(this.addOrderButton_Click);
+            // 
+            // ordersGridView
+            // 
+            this.ordersGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.ordersGridView.Location = new System.Drawing.Point(2, 33);
+            this.ordersGridView.Name = "ordersGridView";
+            this.ordersGridView.Size = new System.Drawing.Size(567, 417);
+            this.ordersGridView.TabIndex = 0;
             // 
             // tabPage4
             // 
@@ -417,7 +475,8 @@ namespace pp._05
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic)).EndInit();
             this.tabPage2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.tabPage2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ordersGridView)).EndInit();
             this.tabPage4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             this.tabPage6.ResumeLayout(false);
@@ -459,6 +518,11 @@ namespace pp._05
         private System.Windows.Forms.MaskedTextBox patientFioTextBox;
         private System.Windows.Forms.Button fillBiomaterial;
         private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView ordersGridView;
+        private System.Windows.Forms.Button deleteOrderButton;
+        private System.Windows.Forms.Button changeOrderButton;
+        private System.Windows.Forms.Button addOrderButton;
+        private System.Windows.Forms.Button orderSearchButton;
+        private System.Windows.Forms.TextBox orderSearchField;
     }
 }
