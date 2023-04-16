@@ -152,7 +152,7 @@ namespace pp._05
         private string GetUserType(string login)
         {
             string userType = null;
-            string connectionString = "Server=localhost;Port=5432;Database=pp.05;User Id=postgres;Password=0000;";
+            string connectionString = "Server=localhost;Port=5432;Database=pp05;User Id=postgres;Password=1432;";
             string sql = "SELECT type FROM Users WHERE Login=@Login;";
 
             try
@@ -183,7 +183,7 @@ namespace pp._05
         private string AuthenticateUser(string login, string password)
         {
             string name = null;
-            string connectionString = "Server=localhost;Port=5432;Database=pp.05;User Id=postgres;Password=0000;";
+            string connectionString = "Server=localhost;Port=5432;Database=pp05;User Id=postgres;Password=1432;";
             string sql = "SELECT name FROM Users WHERE Login=@Login AND Password=@Password;";
 
             try
